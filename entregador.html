@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrega Express - Área do Entregador</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 sidebar">
+                <div class="text-center mb-4">
+                    <h3>Entrega Express</h3>
+                    <p>Área do Entregador</p>
+                </div>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#dashboard">
+                            <i class="fas fa-home"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#entregas">
+                            <i class="fas fa-truck"></i> Entregas Disponíveis
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#minhas-entregas">
+                            <i class="fas fa-list"></i> Minhas Entregas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#historico">
+                            <i class="fas fa-history"></i> Histórico
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#ganhos">
+                            <i class="fas fa-money-bill-wave"></i> Ganhos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#perfil">
+                            <i class="fas fa-user"></i> Meu Perfil
+                        </a>
+                    </li>
+                    <li class="nav-item mt-5">
+                        <a class="nav-link" href="#" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i> Sair
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Content -->
+            <div class="col-md-9 col-lg-10 content">
+                <!-- Dashboard Section -->
+                <div id="dashboard" class="section-content active">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2>Dashboard</h2>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="availabilityToggle" checked>
+                            <label class="form-check-label" for="availabilityToggle">Disponível para Entregas</label>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="stats-card">
+                                <i class="fas fa-box"></i>
+                                <h3>28</h3>
+                                <p>Entregas Realizadas</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stats-card">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <h3>R$ 1.250,00</h3>
+                                <p>Ganhos do Mês</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stats-card">
+                                <i class="fas fa-star"></i>
+                                <h3>4.8</h3>
+                                <p>Avaliação Média</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="dashboard-card">
+                                <div class="card-header">
+                                    <i class="fas fa-truck-loading me-2"></i> Entrega em Andamento
+                                </div>
+                                <div class="card-body">
+                                    <div class="delivery-item active">
+                                        <div class="d-flex justify-content-between">
+                                            <h5>Entrega #2</h5>
+                                            <span class="status-badge status-em_entrega">Em Entrega</span>
+                                        </div>
+                                        <p><strong>Origem:</strong> Av. Brigadeiro Faria Lima, 3000</p>
+                                        <p><strong>Destino:</strong> Rua Oscar Freire, 700</p>
+                                        <p><strong>Cliente:</strong> Cliente Teste</p>
+                                        <p><strong>Item:</strong> Documentos (0.5 kg)</p>
+                                        <p><strong>Pagamento:</strong> R$ 18,50 (Dinheiro)</p>
+                                        <div class="d-flex justify-content-between mt-3">
+                                            <button class="btn btn-primary">Ver Detalhes</button>
+                                            <button class="btn btn-success">Marcar como Entregue</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="dashboard-card">
+                                <div class="card-header">
+                                    <i class="fas fa-map-marker-alt me-2"></i> Sua Localização Atual
+                                </div>
+                                <div class="card-body">
+                                    <div class="map-container">
+                                        <img src="img/map-example.jpg" alt="Mapa" class="img-fluid w-100 h-100" style="object-fit: cover;">
+                                    </div>
+                                    <div class="text-center mt-3">
+                                        <button class="btn btn-primary">Atualizar Localização</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Entregas Disponíveis Section -->
+                <div id="entregas" class="section-content">
+                    <h2 class="mb-4">Entregas Disponíveis</h2>
+                    
+                    <div class="card dashboard-card mb-4">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span><i class="fas fa-search me-2"></i> Entregas Próximas a Você</span>
+                                <button class="btn btn-sm btn-primary">Atualizar</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="delivery-item pending">
+                                <div class="d-flex justify-content-between">
+                                    <h5>Entrega #3</h5>
+                                    <span class="status-badge status-aguardando">Aguardando</span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><strong>Origem:</strong> Av. Rebouças, 1500, São Paulo, SP</p>
+                                        <p><strong>Destino:</strong> Rua da Consolação, 2000, São Paulo, SP</p>
+                                        <p><strong>Distância:</strong> 2.5 km</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><strong>Item:</strong> Encomenda média (3.0 kg)</p>
+                                        <p><strong>Pagamento:</strong> R$ 22,00 (Cartão)</p>
+                                        <p><strong>Solicitado:</strong> Há 5 minutos</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-3 text-center">
+                                    <button class="btn btn-success">Aceitar Entrega</button>
+                                </div>
+                            </div>
+                            
+                            <div class="alert alert-info mt-4 text-center">
+                                <p class="mb-0">Não há mais entregas disponíveis próximas a você no momento.</p>
+                                <small>Atualize a página ou aguarde novas solicitações.</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card dashboard-card">
+                        <div class="card-header">
+                            <i class="fas fa-map-marked-alt me-2"></i> Mapa de Entregas Disponíveis
+                        </div>
+                        <div class="card-body">
+                            <div class="map-container">
+                                <img src="img/map-example.jpg" alt="Mapa" class="img-fluid w-100 h-100" style="object-fit: cover;">
+                            </div>
+                            <div class="text-center mt-3">
+                                <p>Entregas disponíveis são exibidas no mapa com marcadores vermelhos.</p>
+                                <p>Sua localização atual é exibida com um marcador azul.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Minhas Entregas Section -->
+                <div id="minhas-entregas" class="section-content">
+                    <h2 class="mb-4">Minhas Entregas</h2>
+                    
+                    <div class="card dashboard-card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-truck me-2"></i> Entrega em Andamento
+                        </div>
+                        <div class="card-body">
+                            <div class="delivery-item active">
+                                <div class="d-flex justify-content-between">
+                                    <h5>Entrega #2</h5>
+                                    <span class="status-badge status-em_entrega">Em Entrega</span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><strong>Origem:</strong> Av. Brigadeiro Faria Lima, 3000, São Paulo, SP</p>
+                                        <p><strong>Destino:</strong> Rua Oscar Freire, 700, São Paulo, SP</p>
+                                        <p><strong>Cliente:</strong> Cliente Teste</p>
+                                        <p><strong>Telefone:</strong> (11) 99999-9999</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><strong>Item:</strong> Documentos (0.5 kg)</p>
+                                        <p><strong>Pagamento:</strong> R$ 18,50 (Dinheiro)</p>
+                                        <p><strong>Aceita em:</strong> 21/05/2025 10:20</p>
+                                        <p><strong>Tempo estimado:</strong> 15 minutos</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-3">
+                                    <h6>Status da Entrega</h6>
+                                    <div class="progress mb-3">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="d-flex justify-content-between text-center">
+                                        <div>
+                                            <i class="fas fa-check-circle text-success"></i>
+                                            <p>Aceita</p>
+                                            <small>10:20</small>
+                                        </div>
+                                        <div>
+                                            <i class="fas fa-check-circle text-success"></i>
+                                            <p>Em Coleta</p>
+                                            <small>10:30</small>
+                                        </div>
+                                        <div>
+                                            <i class="fas fa-check-circle text-success"></i>
+                                            <p>Coletada</p>
+                                            <small>10:45</small>
+                                        </div>
+                                        <div>
+                                            <i class="fas fa-circle-notch fa-spin text-primary"></i>
+                                            <p>Em Entrega</p>
+                                            <small>11:20</small>
+                                        </div>
+                                        <div>
+                                            <i class="far fa-circle text-secondary"></i>
+                                            <p>Entregue</p>
+                                            <small>--:--</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4">
+                                    <h6>Rota</h6>
+                                    <div class="map-container">
+                                        <img src="img/map-example.jpg" alt="Mapa" class="img-fluid w-100 h-100" style="object-fit: cover;">
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-3 d-flex justify-content-between">
+                                    <button class="btn btn-warning">Reportar Problema</button>
+                                    <div>
+                                        <button class="btn btn-primary me-2">Contatar Cliente</button>
+                                        <button class="btn btn-success">Marcar como Entregue</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Histórico Section -->
+                <div id="historico" class="section-content">
+                    <h2 class="mb-4">Histórico de Entregas</h2>
+                    
+                    <div class="card dashboard-card">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span><i class="fas fa-history me-2"></i> Entregas Anteriores</span>
+                                <div>
+                                    <select class="form-select form-select-sm" id="historyFilter">
+                                        <option value="all">Todas</option>
+                                        <option value="month">Último Mês</option>
+                                        <option value="week">Última Semana</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Data</th>
+                                            <th>Origem</th>
+                                            <th>Destino</th>
+                                            <th>Cliente</th>
+                                            <th>Valor</th>
+                                            <th>Status</th>
+                                            <th>Avaliação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>20/05/2025</td>
+                                            <td>Av. Paulista, 1000</td>
+                                            <td>Rua Augusta, 500</td>
+                                            <td>Cliente Teste</td>
+                                            <td>R$ 25,00</td>
+                                            <td><span class="status-badge status-entregue">Entregue</span></td>
+                                            <td>
+                                                <div class="rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>19/05/2025</td>
+                                            <td>Rua Haddock Lobo, 200</td>
+                                            <td>Av. Paulista, 1500</td>
+                                            <td>Maria Oliveira</td>
+                                            <td>R$ 18,50</td>
+                                            <td><span class="status-badge status-entregue">Entregue</span></td>
+                                            <td>
+                                                <div class="rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>18/05/2025</td>
+                                            <td>Av. Rebouças, 500</td>
+                                            <td>Rua Oscar Freire, 300</td>
+                                            <td>João Santos</td>
+                                            <td>R$ 22,00</td>
+                                            <td><span class="status-badge status-entregue">Entregue</span></td>
+                                            <td>
+                                                <div class="rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1">Anterior</a>
+                                    </li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">Próximo</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ganhos Section -->
+                <div id="ganhos" class="section-content">
+                    <h2 class="mb-4">Meus Ganhos</h2>
+                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="stats-card">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <h3>R$ 1.250,00</h3>
+                                <p>Ganhos do Mês</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stats-card">
+                                <i class="fas fa-calendar-week"></i>
+                                <h3>R$ 320,00</h3>
+                                <p>Ganhos da Semana</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stats-card">
+                                <i class="fas fa-calendar-day"></i>
+                                <h3>R$ 65,50</h3>
+                                <p>Ganhos de Hoje</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card dashboard-card mt-4">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span><i class="fas fa-chart-line me-2"></i> Histórico de Ganhos</span>
+                                <div>
+                                    <select class="form-select form-select-sm" id="earningsFilter">
+                                        <option value="month">Mensal</option>
+                                        <option value="week">Semanal</option>
+                                        <option value="day">Diário</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div style="height: 300px; background-color: #f8f9fa; border-radius: 5px; display: flex; justify-content: center; align-items: center;">
+                                <p class="text-muted">Gráfico de ganhos seria exibido aqui</p>
+                            </div>
+                            
+                            <div class="table-responsive mt-4">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Período</th>
+                                            <th>Entregas</th>
+                                            <th>Valor Total</th>
+                                            <th>Média por Entrega</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Maio 2025</td>
+                                            <td>28</td>
+                                            <td>R$ 1.250,00</td>
+                                            <td>R$ 44,64</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Abril 2025</td>
+                                            <td>32</td>
+                                            <td>R$ 1.420,00</td>
+                                            <td>R$ 44,38</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Março 2025</td>
+                                            <td>30</td>
+                                            <td>R$ 1.350,00</td>
+                                            <td>R$ 45,00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Perfil Section -->
+                <div id="perfil" class="section-content">
+                    <h2 class="mb-4">Meu Perfil</h2>
+                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card dashboard-card">
+                                <div class="card-body profile-card">
+                                    <img src="img/profile-placeholder.jpg" alt="Perfil" class="avatar">
+                                    <h4>João Silva</h4>
+                                    <p>joao@entregaexpress.com</p>
+                                    <p>(11) 97777-7777</p>
+                                    <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                        <span>4.8</span>
+                                    </div>
+                                    <button class="btn btn-primary mt-3">Editar Perfil</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-8">
+                            <div class="card dashboard-card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-motorcycle me-2"></i> Informações do Veículo
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <h5>Veículo Cadastrado</h5>
+                                        <button class="btn btn-sm btn-primary">Editar</button>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p><strong>Tipo:</strong> Moto</p>
+                                            <p><strong>Modelo:</strong> Honda CG 160</p>
+                                            <p><strong>Ano:</strong> 2023</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><strong>Placa:</strong> ABC-1234</p>
+                                            <p><strong>Cor:</strong> Preta</p>
+                                            <p><strong>Documentação:</strong> <span class="text-success">Verificada</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card dashboard-card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-cog me-2"></i> Preferências
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Raio de Atuação</label>
+                                        <select class="form-select">
+                                            <option>5 km</option>
+                                            <option selected>10 km</option>
+                                            <option>15 km</option>
+                                            <option>20 km</option>
+                                        </select>
+                                        <small class="text-muted">Distância máxima para receber solicitações de entrega</small>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Horário de Disponibilidade</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <input type="time" class="form-control" value="08:00">
+                                                <small class="text-muted">Início</small>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="time" class="form-control" value="18:00">
+                                                <small class="text-muted">Fim</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Dias de Trabalho</label>
+                                        <div class="d-flex flex-wrap">
+                                            <div class="form-check me-3">
+                                                <input class="form-check-input" type="checkbox" checked>
+                                                <label class="form-check-label">Segunda</label>
+                                            </div>
+                                            <div class="form-check me-3">
+                                                <input class="form-check-input" type="checkbox" checked>
+                                                <label class="form-check-label">Terça</label>
+                                            </div>
+                                            <div class="form-check me-3">
+                                                <input class="form-check-input" type="checkbox" checked>
+                                                <label class="form-check-label">Quarta</label>
+                                            </div>
+                                            <div class="form-check me-3">
+                                                <input class="form-check-input" type="checkbox" checked>
+                                                <label class="form-check-label">Quinta</label>
+                                            </div>
+                                            <div class="form-check me-3">
+                                                <input class="form-check-input" type="checkbox" checked>
+                                                <label class="form-check-label">Sexta</label>
+                                            </div>
+                                            <div class="form-check me-3">
+                                                <input class="form-check-input" type="checkbox">
+                                                <label class="form-check-label">Sábado</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                                <label class="form-check-label">Domingo</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="text-center mt-4">
+                                        <button class="btn btn-primary">Salvar Preferências</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card dashboard-card">
+                                <div class="card-header">
+                                    <i class="fas fa-credit-card me-2"></i> Dados Bancários
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <h5>Conta para Recebimentos</h5>
+                                        <button class="btn btn-sm btn-primary">Editar</button>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p><strong>Banco:</strong> Banco do Brasil</p>
+                                            <p><strong>Tipo de Conta:</strong> Corrente</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><strong>Agência:</strong> 1234</p>
+                                            <p><strong>Conta:</strong> 56789-0</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Success Modal -->
+    <div class="modal fade" id="deliveryAcceptedModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">Entrega Aceita!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+                    <h4 class="mt-3">Você aceitou a entrega #3</h4>
+                    <p>Dirija-se ao endereço de origem para coletar o item.</p>
+                    <p>Você pode acompanhar os detalhes na seção "Minhas Entregas".</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <a href="#minhas-entregas" class="btn btn-primary" data-bs-dismiss="modal">Ver Detalhes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar login
+            const currentUser = getCurrentUser();
+            if (!currentUser) {
+                window.location.href = 'login.html';
+            }
+            
+            // Navegação entre seções
+            const navLinks = document.querySelectorAll('.sidebar .nav-link');
+            const sectionContents = document.querySelectorAll('.section-content');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.getAttribute('href') === '#' || this.id === 'logoutBtn') return;
+                    
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    
+                    // Atualizar links ativos
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Mostrar seção correspondente
+                    sectionContents.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === targetId) {
+                            section.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Toggle de disponibilidade
+            const availabilityToggle = document.getElementById('availabilityToggle');
+            if (availabilityToggle) {
+                availabilityToggle.addEventListener('change', function() {
+                    const courierId = 1; // ID do entregador atual
+                    updateCourierAvailability(courierId, this.checked);
+                    
+                    if (this.checked) {
+                        alert('Você está disponível para receber entregas.');
+                    } else {
+                        alert('Você está indisponível para receber entregas.');
+                    }
+                });
+            }
+            
+            // Aceitar entrega
+            const acceptButtons = document.querySelectorAll('.btn-success');
+            acceptButtons.forEach(button => {
+                if (button.textContent === 'Aceitar Entrega') {
+                    button.addEventListener('click', function() {
+                        const deliveryAcceptedModal = new bootstrap.Modal(document.getElementById('deliveryAcceptedModal'));
+                        deliveryAcceptedModal.show();
+                    });
+                }
+                
+                if (button.textContent === 'Marcar como Entregue') {
+                    button.addEventListener('click', function() {
+                        alert('Entrega marcada como concluída com sucesso!');
+                        // Aqui seria a lógica para atualizar o status da entrega
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

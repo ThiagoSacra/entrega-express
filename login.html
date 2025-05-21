@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrega Express - Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .login-container {
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+        }
+        .login-card {
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            padding: 30px;
+        }
+        .login-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .login-logo h2 {
+            color: var(--primary-color);
+            margin-top: 10px;
+        }
+        .login-tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .login-tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        .login-tab.active {
+            border-bottom: 2px solid var(--primary-color);
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-control {
+            padding: 12px;
+            border-radius: 5px;
+        }
+        .btn-login {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 12px;
+            width: 100%;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .btn-login:hover {
+            background-color: var(--primary-color-dark);
+            color: white;
+        }
+        .forgot-password {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-logo">
+                <i class="fas fa-truck-fast fa-3x" style="color: var(--primary-color);"></i>
+                <h2>Entrega Express</h2>
+                <p>Sistema de Gestão de Entregas</p>
+            </div>
+            
+            <div class="login-tabs">
+                <div class="login-tab active" data-tab="login">Login</div>
+                <div class="login-tab" data-tab="register">Cadastro</div>
+            </div>
+            
+            <div id="login-content" class="tab-content active">
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-email" class="form-label">Email</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                            <input type="email" class="form-control" id="login-email" placeholder="Seu email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="login-password" class="form-label">Senha</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                            <input type="password" class="form-control" id="login-password" placeholder="Sua senha" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="remember-me">
+                            <label class="form-check-label" for="remember-me">
+                                Lembrar-me
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="user-type" class="form-label">Entrar como</label>
+                        <select class="form-select" id="user-type">
+                            <option value="client">Cliente</option>
+                            <option value="courier">Entregador</option>
+                            <option value="admin">Administrador</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-login">Entrar</button>
+                    
+                    <div class="forgot-password">
+                        <a href="#">Esqueceu sua senha?</a>
+                    </div>
+                </form>
+            </div>
+            
+            <div id="register-content" class="tab-content">
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="register-name" class="form-label">Nome Completo</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <input type="text" class="form-control" id="register-name" placeholder="Seu nome completo" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="register-email" class="form-label">Email</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                            <input type="email" class="form-control" id="register-email" placeholder="Seu email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="register-phone" class="form-label">Telefone</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                            <input type="tel" class="form-control" id="register-phone" placeholder="Seu telefone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="register-password" class="form-label">Senha</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                            <input type="password" class="form-control" id="register-password" placeholder="Sua senha" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="register-confirm-password" class="form-label">Confirmar Senha</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                            <input type="password" class="form-control" id="register-confirm-password" placeholder="Confirme sua senha" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="register-type" class="form-label">Cadastrar como</label>
+                        <select class="form-select" id="register-type">
+                            <option value="client">Cliente</option>
+                            <option value="courier">Entregador</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="terms" required>
+                            <label class="form-check-label" for="terms">
+                                Concordo com os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-login">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Alternar entre abas de login e cadastro
+            const tabs = document.querySelectorAll('.login-tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Atualizar abas ativas
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Mostrar conteúdo correspondente
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === tabId + '-content') {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Formulário de login
+            const loginForm = document.getElementById('login-form');
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
+                const userType = document.getElementById('user-type').value;
+                
+                // Simulação de login
+                if (email && password) {
+                    // Credenciais de demonstração
+                    if (userType === 'admin' && email === 'admin@entregaexpress.com' && password === 'admin2025') {
+                        // Login como administrador
+                        localStorage.setItem('currentUser', JSON.stringify({
+                            id: 1,
+                            name: 'Administrador',
+                            email: email,
+                            type: 'admin'
+                        }));
+                        window.location.href = 'admin.html';
+                    } else if (userType === 'courier') {
+                        // Login como entregador
+                        localStorage.setItem('currentUser', JSON.stringify({
+                            id: 2,
+                            name: 'João Silva',
+                            email: email,
+                            type: 'courier'
+                        }));
+                        window.location.href = 'entregador.html';
+                    } else {
+                        // Login como cliente
+                        localStorage.setItem('currentUser', JSON.stringify({
+                            id: 3,
+                            name: 'Cliente Teste',
+                            email: email,
+                            type: 'client'
+                        }));
+                        window.location.href = 'cliente.html';
+                    }
+                } else {
+                    alert('Por favor, preencha todos os campos.');
+                }
+            });
+            
+            // Formulário de cadastro
+            const registerForm = document.getElementById('register-form');
+            registerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('register-name').value;
+                const email = document.getElementById('register-email').value;
+                const phone = document.getElementById('register-phone').value;
+                const password = document.getElementById('register-password').value;
+                const confirmPassword = document.getElementById('register-confirm-password').value;
+                const userType = document.getElementById('register-type').value;
+                const terms = document.getElementById('terms').checked;
+                
+                // Validação básica
+                if (!name || !email || !phone || !password || !confirmPassword) {
+                    alert('Por favor, preencha todos os campos.');
+                    return;
+                }
+                
+                if (password !== confirmPassword) {
+                    alert('As senhas não coincidem.');
+                    return;
+                }
+                
+                if (!terms) {
+                    alert('Você deve concordar com os Termos de Uso e Política de Privacidade.');
+                    return;
+                }
+                
+                // Simulação de cadastro
+                alert('Cadastro realizado com sucesso! Faça login para continuar.');
+                
+                // Limpar formulário
+                registerForm.reset();
+                
+                // Voltar para a aba de login
+                tabs[0].click();
+            });
+        });
+    </script>
+</body>
+</html>

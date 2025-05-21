@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrega Express - Área do Cliente</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 sidebar">
+                <div class="text-center mb-4">
+                    <h3>Entrega Express</h3>
+                    <p>Área do Cliente</p>
+                </div>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#dashboard">
+                            <i class="fas fa-home"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#nova-entrega">
+                            <i class="fas fa-plus-circle"></i> Nova Entrega
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#entregas">
+                            <i class="fas fa-list"></i> Minhas Entregas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#historico">
+                            <i class="fas fa-history"></i> Histórico
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#perfil">
+                            <i class="fas fa-user"></i> Meu Perfil
+                        </a>
+                    </li>
+                    <li class="nav-item mt-5">
+                        <a class="nav-link" href="#" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i> Sair
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Content -->
+            <div class="col-md-9 col-lg-10 content">
+                <!-- Dashboard Section -->
+                <div id="dashboard" class="section-content active">
+                    <h2 class="mb-4">Dashboard</h2>
+                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="stats-card">
+                                <i class="fas fa-box"></i>
+                                <h3>12</h3>
+                                <p>Entregas Realizadas</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stats-card">
+                                <i class="fas fa-truck"></i>
+                                <h3>2</h3>
+                                <p>Entregas em Andamento</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stats-card">
+                                <i class="fas fa-star"></i>
+                                <h3>4.9</h3>
+                                <p>Avaliação Média</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="dashboard-card">
+                                <div class="card-header">
+                                    <i class="fas fa-truck-loading me-2"></i> Entregas em Andamento
+                                </div>
+                                <div class="card-body">
+                                    <div class="delivery-item active">
+                                        <div class="d-flex justify-content-between">
+                                            <h5>Entrega #2</h5>
+                                            <span class="status-badge status-em_entrega">Em Entrega</span>
+                                        </div>
+                                        <p><strong>Origem:</strong> Av. Brigadeiro Faria Lima, 3000</p>
+                                        <p><strong>Destino:</strong> Rua Oscar Freire, 700</p>
+                                        <p><strong>Entregador:</strong> Maria Santos</p>
+                                        <a href="#entregas" class="btn btn-sm btn-primary">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="dashboard-card">
+                                <div class="card-header">
+                                    <i class="fas fa-clock me-2"></i> Entregas Recentes
+                                </div>
+                                <div class="card-body">
+                                    <div class="delivery-item completed">
+                                        <div class="d-flex justify-content-between">
+                                            <h5>Entrega #1</h5>
+                                            <span class="status-badge status-entregue">Entregue</span>
+                                        </div>
+                                        <p><strong>Origem:</strong> Av. Paulista, 1000</p>
+                                        <p><strong>Destino:</strong> Rua Augusta, 500</p>
+                                        <p><strong>Entregador:</strong> João Silva</p>
+                                        <div class="rating">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Nova Entrega Section -->
+                <div id="nova-entrega" class="section-content">
+                    <h2 class="mb-4">Nova Entrega</h2>
+                    
+                    <div class="card dashboard-card">
+                        <div class="card-header">
+                            <i class="fas fa-plus-circle me-2"></i> Solicitar Entrega
+                        </div>
+                        <div class="card-body">
+                            <form id="newDeliveryForm">
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <h5>Endereço de Origem</h5>
+                                        <div class="mb-3">
+                                            <label for="originAddress" class="form-label">Endereço Completo</label>
+                                            <input type="text" class="form-control" id="originAddress" placeholder="Rua, número, bairro, cidade, estado">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="originContact" class="form-label">Nome do Contato</label>
+                                            <input type="text" class="form-control" id="originContact">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="originPhone" class="form-label">Telefone</label>
+                                            <input type="text" class="form-control" id="originPhone">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="originInstructions" class="form-label">Instruções</label>
+                                            <textarea class="form-control" id="originInstructions" rows="2"></textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <h5>Endereço de Destino</h5>
+                                        <div class="mb-3">
+                                            <label for="destinationAddress" class="form-label">Endereço Completo</label>
+                                            <input type="text" class="form-control" id="destinationAddress" placeholder="Rua, número, bairro, cidade, estado">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="destinationContact" class="form-label">Nome do Contato</label>
+                                            <input type="text" class="form-control" id="destinationContact">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="destinationPhone" class="form-label">Telefone</label>
+                                            <input type="text" class="form-control" id="destinationPhone">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="destinationInstructions" class="form-label">Instruções</label>
+                                            <textarea class="form-control" id="destinationInstructions" rows="2"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <h5>Detalhes do Item</h5>
+                                        <div class="mb-3">
+                                            <label for="itemDescription" class="form-label">Descrição</label>
+                                            <input type="text" class="form-control" id="itemDescription">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="itemSize" class="form-label">Tamanho</label>
+                                            <select class="form-select" id="itemSize">
+                                                <option value="pequeno">Pequeno</option>
+                                                <option value="medio">Médio</option>
+                                                <option value="grande">Grande</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="itemWeight" class="form-label">Peso (kg)</label>
+                                            <input type="number" class="form-control" id="itemWeight" step="0.1">
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="itemFragile">
+                                            <label class="form-check-label" for="itemFragile">
+                                                Item frágil
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <h5>Pagamento</h5>
+                                        <div class="mb-3">
+                                            <label for="paymentMethod" class="form-label">Método de Pagamento</label>
+                                            <select class="form-select" id="paymentMethod">
+                                                <option value="cartao">Cartão de Crédito</option>
+                                                <option value="dinheiro">Dinheiro</option>
+                                                <option value="pix">PIX</option>
+                                            </select>
+                                        </div>
+                                        <div class="alert alert-info">
+                                            <p class="mb-0"><strong>Estimativa de Preço:</strong> <span id="estimatedPrice">R$ 25,00</span></p>
+                                            <small>O preço final pode variar de acordo com a distância e o tempo de entrega.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg">Solicitar Entrega</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Minhas Entregas Section -->
+                <div id="entregas" class="section-content">
+                    <h2 class="mb-4">Minhas Entregas</h2>
+                    
+                    <div class="card dashboard-card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-truck me-2"></i> Entrega em Andamento
+                        </div>
+                        <div class="card-body">
+                            <div class="delivery-item active">
+                                <div class="d-flex justify-content-between">
+                                    <h5>Entrega #2</h5>
+                                    <span class="status-badge status-em_entrega">Em Entrega</span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><strong>Origem:</strong> Av. Brigadeiro Faria Lima, 3000, São Paulo, SP</p>
+                                        <p><strong>Destino:</strong> Rua Oscar Freire, 700, São Paulo, SP</p>
+                                        <p><strong>Item:</strong> Documentos (0.5 kg)</p>
+                                        <p><strong>Solicitado em:</strong> 21/05/2025 10:15</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><strong>Entregador:</strong> Maria Santos</p>
+                                        <p><strong>Veículo:</strong> Carro</p>
+                                        <p><strong>Telefone:</strong> (11) 96666-6666</p>
+                                        <p><strong>Pagamento:</strong> R$ 18,50 (Dinheiro)</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-3">
+                                    <h6>Status da Entrega</h6>
+                                    <div class="progress mb-3">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="d-flex justify-content-between text-center">
+                                        <div>
+                                            <i class="fas fa-check-circle text-success"></i>
+                                            <p>Solicitado</p>
+                                            <small>10:15</small>
+                                        </div>
+                                        <div>
+                                            <i class="fas fa-check-circle text-success"></i>
+                                            <p>Aceito</p>
+                                            <small>10:20</small>
+                                        </div>
+                                        <div>
+                                            <i class="fas fa-check-circle text-success"></i>
+                                            <p>Em Coleta</p>
+                                            <small>10:30</small>
+                                        </div>
+                                        <div>
+                                            <i class="fas fa-check-circle text-success"></i>
+                                            <p>Coletado</p>
+                                            <small>10:45</small>
+                                        </div>
+                                        <div>
+                                            <i class="fas fa-circle-notch fa-spin text-primary"></i>
+                                            <p>Em Entrega</p>
+                                            <small>11:20</small>
+                                        </div>
+                                        <div>
+                                            <i class="far fa-circle text-secondary"></i>
+                                            <p>Entregue</p>
+                                            <small>--:--</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4">
+                                    <h6>Localização do Entregador</h6>
+                                    <div class="map-container">
+                                        <img src="img/map-example.jpg" alt="Mapa" class="img-fluid w-100 h-100" style="object-fit: cover;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card dashboard-card">
+                        <div class="card-header">
+                            <i class="fas fa-clock me-2"></i> Entrega Pendente
+                        </div>
+                        <div class="card-body">
+                            <div class="delivery-item pending">
+                                <div class="d-flex justify-content-between">
+                                    <h5>Entrega #3</h5>
+                                    <span class="status-badge status-aguardando">Aguardando</span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><strong>Origem:</strong> Av. Rebouças, 1500, São Paulo, SP</p>
+                                        <p><strong>Destino:</strong> Rua da Consolação, 2000, São Paulo, SP</p>
+                                        <p><strong>Item:</strong> Encomenda média (3.0 kg)</p>
+                                        <p><strong>Solicitado em:</strong> 21/05/2025 13:00</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><strong>Entregador:</strong> Aguardando atribuição</p>
+                                        <p><strong>Pagamento:</strong> R$ 22,00 (Cartão)</p>
+                                        <div class="alert alert-info mt-3">
+                                            <p class="mb-0">Buscando entregador próximo...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-3">
+                                    <h6>Status da Entrega</h6>
+                                    <div class="progress mb-3">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="d-flex justify-content-between text-center">
+                                        <div>
+                                            <i class="fas fa-circle-notch fa-spin text-warning"></i>
+                                            <p>Solicitado</p>
+                                            <small>13:00</small>
+                                        </div>
+                                        <div>
+                                            <i class="far fa-circle text-secondary"></i>
+                                            <p>Aceito</p>
+                                            <small>--:--</small>
+                                        </div>
+                                        <div>
+                                            <i class="far fa-circle text-secondary"></i>
+                                            <p>Em Coleta</p>
+                                            <small>--:--</small>
+                                        </div>
+                                        <div>
+                                            <i class="far fa-circle text-secondary"></i>
+                                            <p>Coletado</p>
+                                            <small>--:--</small>
+                                        </div>
+                                        <div>
+                                            <i class="far fa-circle text-secondary"></i>
+                                            <p>Em Entrega</p>
+                                            <small>--:--</small>
+                                        </div>
+                                        <div>
+                                            <i class="far fa-circle text-secondary"></i>
+                                            <p>Entregue</p>
+                                            <small>--:--</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-3 text-center">
+                                    <button class="btn btn-danger">Cancelar Entrega</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Histórico Section -->
+                <div id="historico" class="section-content">
+                    <h2 class="mb-4">Histórico de Entregas</h2>
+                    
+                    <div class="card dashboard-card">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span><i class="fas fa-history me-2"></i> Entregas Anteriores</span>
+                                <div>
+                                    <select class="form-select form-select-sm" id="historyFilter">
+                                        <option value="all">Todas</option>
+                                        <option value="month">Último Mês</option>
+                                        <option value="week">Última Semana</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Data</th>
+                                            <th>Origem</th>
+                                            <th>Destino</th>
+                                            <th>Entregador</th>
+                                            <th>Valor</th>
+                                            <th>Status</th>
+                                            <th>Avaliação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>20/05/2025</td>
+                                            <td>Av. Paulista, 1000</td>
+                                            <td>Rua Augusta, 500</td>
+                                            <td>João Silva</td>
+                                            <td>R$ 25,00</td>
+                                            <td><span class="status-badge status-entregue">Entregue</span></td>
+                                            <td>
+                                                <div class="rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>15/05/2025</td>
+                                            <td>Rua Haddock Lobo, 200</td>
+                                            <td>Av. Paulista, 1500</td>
+                                            <td>Maria Santos</td>
+                                            <td>R$ 18,50</td>
+                                            <td><span class="status-badge status-entregue">Entregue</span></td>
+                                            <td>
+                                                <div class="rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>10/05/2025</td>
+                                            <td>Av. Rebouças, 500</td>
+                                            <td>Rua Oscar Freire, 300</td>
+                                            <td>Pedro Oliveira</td>
+                                            <td>R$ 22,00</td>
+                                            <td><span class="status-badge status-entregue">Entregue</span></td>
+                                            <td>
+                                                <div class="rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1">Anterior</a>
+                                    </li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">Próximo</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Perfil Section -->
+                <div id="perfil" class="section-content">
+                    <h2 class="mb-4">Meu Perfil</h2>
+                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card dashboard-card">
+                                <div class="card-body profile-card">
+                                    <img src="img/profile-placeholder.jpg" alt="Perfil" class="avatar">
+                                    <h4>Cliente Teste</h4>
+                                    <p>cliente@entregaexpress.com</p>
+                                    <p>(11) 99999-9999</p>
+                                    <button class="btn btn-primary mt-3">Editar Perfil</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-8">
+                            <div class="card dashboard-card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-map-marker-alt me-2"></i> Meus Endereços
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <h5>Endereços Salvos</h5>
+                                        <button class="btn btn-sm btn-success">Adicionar Novo</button>
+                                    </div>
+                                    
+                                    <div class="list-group">
+                                        <div class="list-group-item list-group-item-action">
+                                            <div class="d-flex justify-content-between">
+                                                <h6>Casa</h6>
+                                                <div>
+                                                    <button class="btn btn-sm btn-outline-primary me-2">Editar</button>
+                                                    <button class="btn btn-sm btn-outline-danger">Remover</button>
+                                                </div>
+                                            </div>
+                                            <p class="mb-1">Rua das Flores, 123, Jardim Primavera</p>
+                                            <p class="mb-0">São Paulo, SP - CEP 01234-567</p>
+                                        </div>
+                                        
+                                        <div class="list-group-item list-group-item-action">
+                                            <div class="d-flex justify-content-between">
+                                                <h6>Trabalho</h6>
+                                                <div>
+                                                    <button class="btn btn-sm btn-outline-primary me-2">Editar</button>
+                                                    <button class="btn btn-sm btn-outline-danger">Remover</button>
+                                                </div>
+                                            </div>
+                                            <p class="mb-1">Av. Paulista, 1000, Bela Vista</p>
+                                            <p class="mb-0">São Paulo, SP - CEP 01310-100</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card dashboard-card">
+                                <div class="card-header">
+                                    <i class="fas fa-credit-card me-2"></i> Métodos de Pagamento
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <h5>Cartões Salvos</h5>
+                                        <button class="btn btn-sm btn-success">Adicionar Novo</button>
+                                    </div>
+                                    
+                                    <div class="list-group">
+                                        <div class="list-group-item list-group-item-action">
+                                            <div class="d-flex justify-content-between">
+                                                <h6>Cartão de Crédito</h6>
+                                                <div>
+                                                    <button class="btn btn-sm btn-outline-primary me-2">Editar</button>
+                                                    <button class="btn btn-sm btn-outline-danger">Remover</button>
+                                                </div>
+                                            </div>
+                                            <p class="mb-1">**** **** **** 1234</p>
+                                            <p class="mb-0">Validade: 12/28</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">Entrega Solicitada com Sucesso!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+                    <h4 class="mt-3">Sua entrega foi solicitada</h4>
+                    <p>Estamos buscando o entregador mais próximo para você.</p>
+                    <p>Você pode acompanhar o status da sua entrega na seção "Minhas Entregas".</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <a href="#entregas" class="btn btn-primary" data-bs-dismiss="modal">Ver Entregas</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar login
+            const currentUser = getCurrentUser();
+            if (!currentUser) {
+                window.location.href = 'login.html';
+            }
+            
+            // Navegação entre seções
+            const navLinks = document.querySelectorAll('.sidebar .nav-link');
+            const sectionContents = document.querySelectorAll('.section-content');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.getAttribute('href') === '#' || this.id === 'logoutBtn') return;
+                    
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    
+                    // Atualizar links ativos
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Mostrar seção correspondente
+                    sectionContents.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === targetId) {
+                            section.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Formulário de nova entrega
+            const newDeliveryForm = document.getElementById('newDeliveryForm');
+            if (newDeliveryForm) {
+                newDeliveryForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Simulação de criação de entrega
+                    const deliveryData = {
+                        origin: {
+                            address: document.getElementById('originAddress').value,
+                            contact: {
+                                name: document.getElementById('originContact').value,
+                                phone: document.getElementById('originPhone').value
+                            },
+                            instructions: document.getElementById('originInstructions').value
+                        },
+                        destination: {
+                            address: document.getElementById('destinationAddress').value,
+                            contact: {
+                                name: document.getElementById('destinationContact').value,
+                                phone: document.getElementById('destinationPhone').value
+                            },
+                            instructions: document.getElementById('destinationInstructions').value
+                        },
+                        item: {
+                            description: document.getElementById('itemDescription').value,
+                            size: document.getElementById('itemSize').value,
+                            weight: document.getElementById('itemWeight').value,
+                            isFragile: document.getElementById('itemFragile').checked
+                        },
+                        payment: {
+                            method: document.getElementById('paymentMethod').value,
+                            amount: parseFloat(document.getElementById('estimatedPrice').textContent.replace('R$ ', '').replace(',', '.'))
+                        }
+                    };
+                    
+                    // Criar entrega simulada
+                    createDelivery(deliveryData);
+                    
+                    // Mostrar modal de sucesso
+                    const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                    successModal.show();
+                    
+                    // Limpar formulário
+                    newDeliveryForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
